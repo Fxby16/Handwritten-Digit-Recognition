@@ -35,4 +35,4 @@ double output_layer_weights[NUMOUTPUTS][NUMHIDDEN];
 int outputs[NUMTRAININGSETS];
 
 double LR=0;
-double NUMEPOCHS=0;
+int NUMEPOCHS=0;
