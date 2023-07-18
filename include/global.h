@@ -37,6 +37,6 @@ extern double output_layer_weights[NUMOUTPUTS][NUMHIDDEN];
 extern int outputs[NUMTRAININGSETS];
 
 extern double LR;
-extern double NUMEPOCHS;
+extern int NUMEPOCHS;
 
 #endif
