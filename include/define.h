@@ -1,0 +1,14 @@
+#ifndef DEFINE_H
+#define DEFINE_H
+
+#define NUMINPUTS 784
+#define NUMTRAININGSETS 60000
+#define NUMTESTINGSETS 10000
+#define NUMHIDDEN 50
+#define NUMOUTPUTS 10
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 400
+#define DRAW_WIDTH 20
+#define DRAW_HEIGHT 20
+
+#endif
