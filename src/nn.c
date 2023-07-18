@@ -61,6 +61,23 @@ double init_value(){
     return ((double)rand()/(double)RAND_MAX)-0.5; //generating values between -0.5 and +0.5
 }
 
+void init(){
+    printf("INITIALIZING VALUES\n");
+    
+    for(int i=0;i<NUMHIDDEN;i++){ //initialize weights and biases for the hidden layer
+        hidden_layer_bias[i]=init_value();
+        for(int j=0;j<NUMINPUTS;j++)
+            hidden_layer_weights[i][j]=init_value();
+    }
+
+    for(int i=0;i<NUMOUTPUTS;i++){ //initialize weights and biases for the output layer
+        output_layer_bias[i]=init_value();
+        for(int j=0;j<NUMHIDDEN;j++)
+            output_layer_weights[i][j]=init_value();
+    }
+    printf("INITIALIZATION ENDED\n");
+}   
+
 int max_output(double *output){ //get the most probable output
 int maxindex=0;
     for(int i=0;i<NUMOUTPUTS;i++)
@@ -118,22 +135,6 @@ double deltaOutput[NUMOUTPUTS];
             hidden_layer_weights[i][j]-=deltaHidden[i]*input[j];      
 
 }
-
-void init(){
-printf("INITIALIZING VALUES\n");
-    
-    for(int i=0;i<NUMHIDDEN;i++){ //initialize weights and biases for the hidden layer
-        hidden_layer_bias[i]=init_value();
-        for(int j=0;j<NUMINPUTS;j++)
-            hidden_layer_weights[i][j]=init_value();
-    }
-
-    for(int i=0;i<NUMOUTPUTS;i++){ //initialize weights and biases for the output layer
-        output_layer_bias[i]=init_value();
-        for(int j=0;j<NUMHIDDEN;j++)
-            output_layer_weights[i][j]=init_value();
-    }
-}   
 
 void save_training(){ //print final weights and biases after training
 FILE *fpreport=fopen("conf2.txt","w");
