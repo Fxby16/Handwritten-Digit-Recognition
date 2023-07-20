@@ -23,7 +23,7 @@ double testing_inputs[NUMTESTINGSETS][NUMINPUTS];
 double hidden_layer[NUMHIDDEN];
 double output_layer[NUMOUTPUTS];
 
-double training_outputs[NUMTRAININGSETS][NUMOUTPUTS];
+int training_outputs[NUMTRAININGSETS];
 int testing_outputs[NUMTESTINGSETS];
 
 double hidden_layer_bias[NUMHIDDEN];
@@ -31,8 +31,6 @@ double output_layer_bias[NUMOUTPUTS];
 
 double hidden_layer_weights[NUMHIDDEN][NUMINPUTS];
 double output_layer_weights[NUMOUTPUTS][NUMHIDDEN];
-
-int outputs[NUMTRAININGSETS];
 
 double LR=0;
 int NUMEPOCHS=0;

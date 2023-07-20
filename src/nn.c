@@ -23,14 +23,7 @@ char buffer[5000];
     while(fgets(buffer,5000,fp)){
         int col=0;
         char *num=strtok(buffer,",");
-        int out=atoi(num);
-        outputs[row]=out;
-        for(int i=0;i<NUMOUTPUTS;i++){
-            if(i==out)
-                training_outputs[row][i]=1;
-            else 
-                training_outputs[row][i]=0;
-        }
+        training_outputs[row]=atoi(num);
         while(num){
             num=strtok(NULL,",");
             if(num!=NULL)
@@ -102,12 +95,12 @@ void ForwardPropagation(double *input){
             output_layer[i]+=sigmoid(hidden_layer[j])*output_layer_weights[i][j];
 }
 
-void BackPropagation(double *input,double *output){
+void BackPropagation(double *input,int output){
 double deltaHidden[NUMHIDDEN];
 double deltaOutput[NUMOUTPUTS];
     
     for(int i=0;i<NUMOUTPUTS;i++)
-        deltaOutput[i]=LR*(sigmoid(output_layer[i])-output[i])*dSigmoid(output_layer[i]);
+        deltaOutput[i]=LR*(sigmoid(output_layer[i])-((i==output)?1.0:0.0))*dSigmoid(output_layer[i]); //if this neuron correspond to the correct output, its value should be 1.0, otherwise 0.0
 
     for(int i=0;i<NUMHIDDEN;i++)
         deltaHidden[i]=0;
@@ -184,7 +177,7 @@ void test(){ //test the nn on MNIST dataset
 int corrects=0;
     for(int k=0;k<NUMTRAININGSETS;k++){
         ForwardPropagation(training_inputs[k]);
-        if(outputs[k]==max_output(output_layer))
+        if(training_outputs[k]==max_output(output_layer))
             corrects++;
     }
     printf("ACCURACY: %.6f\tCORRECT ANSWERS: %d\n",(double)corrects*100/NUMTRAININGSETS,corrects);

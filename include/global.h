@@ -25,7 +25,7 @@ extern double testing_inputs[NUMTESTINGSETS][NUMINPUTS];
 extern double hidden_layer[NUMHIDDEN];
 extern double output_layer[NUMOUTPUTS];
 
-extern double training_outputs[NUMTRAININGSETS][NUMOUTPUTS];
+extern int training_outputs[NUMTRAININGSETS];
 extern int testing_outputs[NUMTESTINGSETS];
 
 extern double hidden_layer_bias[NUMHIDDEN];
@@ -33,8 +33,6 @@ extern double output_layer_bias[NUMOUTPUTS];
 
 extern double hidden_layer_weights[NUMHIDDEN][NUMINPUTS];
 extern double output_layer_weights[NUMOUTPUTS][NUMHIDDEN];
-
-extern int outputs[NUMTRAININGSETS];
 
 extern double LR;
 extern int NUMEPOCHS;

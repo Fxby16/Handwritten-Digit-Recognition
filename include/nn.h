@@ -7,7 +7,7 @@ void read_input();
 double init_value();
 int max_output(double *);
 void ForwardPropagation(double *);
-void BackPropagation(double *,double *);
+void BackPropagation(double *,int);
 void init();
 void save_training();
 void load();
