@@ -38,7 +38,7 @@ void init_sdl(){
     TTF_Init();
 
     window=SDL_CreateWindow("Handwritten Digit Recognition",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN);
-    renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+    renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     texture=SDL_CreateTexture(renderer,SDL_PIXELFORMAT_ARGB8888,SDL_TEXTUREACCESS_STREAMING,DRAW_WIDTH,DRAW_HEIGHT);
     Rect.w=400; //create a rect that covers half of the window (the rect where you can draw)
     Rect.h=400;
@@ -76,7 +76,7 @@ SDL_Event event;
                 if(leftMouseButtonDown){
                     int mouseX=event.motion.x/20; //since the part of the screen where you can draw is 20 times bigger, i have to divide the x and y coordinates by 20
                     int mouseY=event.motion.y/20;
-                    if((mouseX>=0 && mouseX<=400) && (mouseY>=0 && mouseY<=400)){ //if you click in the part where you can draw
+                    if((mouseX>=0 && mouseX<20) && (mouseY>=0 && mouseY<20)){ //if you click in the part where you can draw
                         if(draw){ //if you are in draw mode
                             pixels[(mouseY*20)+mouseX]=0x00000000; //color this pixel black
                             input_matrix[mouseY+4][mouseX+4]=0; //color this pixel black also in the matrix that will be the input
