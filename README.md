@@ -74,3 +74,6 @@ To run the executable file run
 ```
 bin/main
 ```
+
+## Notes
+To run this on linux you might have to change the newline character for the two mnist dataset files

@@ -38,7 +38,7 @@ void init_sdl(){
     TTF_Init();
 
     window=SDL_CreateWindow("Handwritten Digit Recognition",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN);
-    renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
     texture=SDL_CreateTexture(renderer,SDL_PIXELFORMAT_ARGB8888,SDL_TEXTUREACCESS_STREAMING,DRAW_WIDTH,DRAW_HEIGHT);
     Rect.w=400; //create a rect that covers half of the window (the rect where you can draw)
     Rect.h=400;
